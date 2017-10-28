@@ -1,5 +1,12 @@
 version: '3'
 services:
+  api:
+    image: golang
+    working_dir: /go/src/deadlock
+    volumes:
+      - .:/go/src/deadlock
+    command: go run main.go
+
   mysql:
     image: mysql
     restart: always

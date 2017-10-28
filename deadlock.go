@@ -10,7 +10,7 @@ import (
 
 func main() {
 	wg := &sync.WaitGroup{}
-	for i := 0; i < 500; i++ {
+	for i := 0; i < 3000; i++ {
 		wg.Add(1)
 		go insert(i, wg)
 	}
@@ -18,7 +18,7 @@ func main() {
 }
 
 func insert(i int, wg *sync.WaitGroup) {
-	db, err := sql.Open("mysql", "root:root@tcp(:13306)/example")
+	db, err := sql.Open("mysql", "root:root@tcp(mysql:3306)/example")
 	if err != nil {
 		fmt.Println("failed to open database connection")
 		panic(err)
